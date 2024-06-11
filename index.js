@@ -13,6 +13,20 @@ setInterval(function () {
 }, 1000);
 
 setInterval(function () {
+  let maldivesElement = document.querySelector("#maldives");
+  if (maldivesElement) {
+    let maldivesDateElement = maldivesElement.querySelector(".date");
+    let maldivesTimeElement = maldivesElement.querySelector(".time");
+    let maldivesTime = moment().tz("Indian/Maldives");
+
+    maldivesDateElement.innerHTML = maldivesTime.format("MMMM Do YYYY");
+    maldivesTimeElement.innerHTML = maldivesTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+}, 1000);
+
+setInterval(function () {
   let sydneyElement = document.querySelector("#sydney");
   if (sydneyElement) {
     let sydneyDateElement = sydneyElement.querySelector(".date");
@@ -47,7 +61,5 @@ function updateCity(event) {
     </div> 
     <a href="/">All cities</a>`;
 }
-
 let citiesSelectElement = document.querySelector("#city");
-
 citiesSelectElement.addEventListener("change", updateCity);
